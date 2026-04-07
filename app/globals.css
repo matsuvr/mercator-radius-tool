@@ -1,0 +1,405 @@
+:root {
+  --panel-width: 360px;
+  --bg: #f3f5f7;
+  --panel: #ffffff;
+  --line: #d8dfe6;
+  --text: #18212a;
+  --subtle: #586574;
+  --accent: #d03a30;
+  --error: #b42318;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: minmax(300px, var(--panel-width)) minmax(0, 1fr);
+  gap: 16px;
+  padding: 16px;
+  min-height: 100vh;
+}
+
+.panel,
+.mapCard {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 4px 22px rgba(15, 23, 42, 0.05);
+}
+
+.panel {
+  padding: 18px 18px 16px;
+  overflow: auto;
+}
+
+.panel h1 {
+  margin: 0 0 10px;
+  font-size: 1.35rem;
+  line-height: 1.35;
+}
+
+.lead {
+  margin: 0 0 16px;
+  color: var(--subtle);
+  line-height: 1.6;
+  font-size: 0.96rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.fieldSpacing {
+  margin-bottom: 2px;
+}
+
+.field.span-2 {
+  grid-column: span 2;
+}
+
+.distancesSection {
+  margin: 14px 0;
+}
+
+.distancesHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.distancesHeader label {
+  font-size: 0.88rem;
+  color: var(--subtle);
+}
+
+.smallBtn {
+  padding: 4px 10px;
+  font-size: 0.82rem;
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.smallBtn:hover {
+  background: #c23329;
+}
+
+.distancesList {
+  display: grid;
+  gap: 8px;
+}
+
+.distanceItem {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.distanceItem input {
+  padding: 8px 12px;
+}
+
+.distanceItem .removeBtn {
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  background: #f1f5f9;
+  border-color: #dde4ea;
+  color: var(--subtle);
+}
+
+.distanceItem .removeBtn:hover {
+  background: #fef3f2;
+  border-color: #fecaca;
+  color: var(--error);
+}
+
+.distanceField {
+  display: grid;
+  gap: 4px;
+}
+
+.distanceItem.invalid .distanceInput {
+  border-color: #f0b4b4;
+  background: #fef8f7;
+}
+
+.invalidHint {
+  display: none;
+  font-size: 0.78rem;
+  color: var(--error);
+  padding-left: 2px;
+}
+
+.distanceItem.invalid .invalidHint {
+  display: block;
+}
+
+label {
+  font-size: 0.88rem;
+  color: var(--subtle);
+}
+
+input,
+button {
+  font: inherit;
+}
+
+input[type="number"],
+input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #bcc8d4;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text);
+}
+
+input[type="color"] {
+  width: 100%;
+  height: 42px;
+  border: 1px solid #bcc8d4;
+  border-radius: 10px;
+  background: #fff;
+  padding: 4px;
+}
+
+button {
+  border: 1px solid #b8c4cf;
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #fff;
+  color: var(--text);
+  cursor: pointer;
+}
+
+button:hover {
+  background: #f7fafc;
+}
+
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+button.primary:hover {
+  background: #c23329;
+}
+
+.actions,
+.exports,
+.viewActions {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.actions {
+  grid-template-columns: 1fr 1fr;
+}
+
+.actions .primary,
+.actions .secondary,
+.viewActions button,
+.exports button {
+  min-height: 44px;
+}
+
+.viewActions,
+.exports {
+  grid-template-columns: 1fr 1fr;
+}
+
+.meta {
+  margin-top: 14px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fafbfd;
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.meta strong {
+  display: inline-block;
+  min-width: 4.8em;
+}
+
+.status {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #f1f5f9;
+  color: #334155;
+  line-height: 1.55;
+  font-size: 0.92rem;
+}
+
+.status[data-type="error"] {
+  background: #fef3f2;
+  color: var(--error);
+}
+
+.notes {
+  margin-top: 14px;
+  color: var(--subtle);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.notes summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.notes .inner {
+  padding-top: 10px;
+}
+
+.notes p {
+  margin: 0 0 10px;
+}
+
+.mapCard {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: calc(100vh - 32px);
+  overflow: hidden;
+}
+
+.mapHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.mapHeader h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.mapHeader .small {
+  color: var(--subtle);
+  font-size: 0.88rem;
+}
+
+.mapWrap {
+  position: relative;
+  min-height: 640px;
+  height: calc(100vh - 92px);
+  background: #eef2f5;
+}
+
+#map {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+  touch-action: none;
+  user-select: none;
+}
+
+.zoomButtons {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: grid;
+  gap: 8px;
+}
+
+.zoomButtons button {
+  width: 44px;
+  height: 44px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.footerText {
+  position: absolute;
+  left: 14px;
+  bottom: 12px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.88);
+  color: #475569;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+code {
+  background: #eef2f5;
+  padding: 0.1em 0.35em;
+  border-radius: 6px;
+}
+
+a {
+  color: var(--accent);
+}
+
+@media (max-width: 980px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+
+  .mapCard {
+    min-height: auto;
+  }
+
+  .mapWrap {
+    height: 68vh;
+    min-height: 520px;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid,
+  .actions,
+  .viewActions,
+  .exports {
+    grid-template-columns: 1fr;
+  }
+
+  .field.span-2 {
+    grid-column: span 1;
+  }
+
+  .mapHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .mapWrap {
+    min-height: 420px;
+  }
+}
